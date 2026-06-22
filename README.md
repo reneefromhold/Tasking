@@ -98,7 +98,8 @@ Tasking/
         │   ├── api/       # API client
         │   ├── auth/      # Auth context and session
         │   ├── components/
-        │   └── pages/     # Login, create user, tasks
+        │   ├── pages/     # Login, create user, tasks
+        │   └── types.test.ts
         └── package.json
 ```
 
@@ -401,6 +402,8 @@ If you previously ran an older schema locally, stop the API, close DBeaver if co
 
 ## Tests
 
+### Backend
+
 Unit tests live in `TaskSystem.Api.Tests` (xUnit + Moq). They cover service CRUD logic, DTO JSON shapes, request validation, and error middleware — no database or HTTP required.
 
 ```bash
@@ -408,7 +411,24 @@ cd src/server
 dotnet test TaskSystem.Api.Tests/TaskSystem.Api.Tests.csproj
 ```
 
-Pull requests run the same test suite via GitHub Actions (`.github/workflows/test.yml`).
+Pull requests run the backend test suite via GitHub Actions (`.github/workflows/test.yml`).
+
+### Frontend
+
+Unit tests use [Vitest](https://vitest.dev/) (configured in `vite.config.ts`). Tests live alongside source files as `*.test.ts` — currently `src/types.test.ts` covers due-date validation helpers in `types.ts`. No API, browser, or running dev server required.
+
+```bash
+cd src/client
+npm install
+npm test
+```
+
+Watch mode (re-runs on file changes):
+
+```bash
+cd src/client
+npm run test:watch
+```
 
 ## Architecture
 
@@ -436,7 +456,7 @@ Pull requests run the same test suite via GitHub Actions (`.github/workflows/tes
 - Seed data for local development
 - Documented auth decision and demo identity flow (header-based, not login)
 - `ICurrentUserAccessor` abstraction ready for a future auth provider
-- Unit tests (services, DTOs, validation, middleware)
+- Unit tests (backend: services, DTOs, validation, middleware; frontend: due-date validation)
 - CI pipeline (GitHub Actions tests on pull request)
 
 ## Assumptions
