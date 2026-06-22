@@ -1,0 +1,72 @@
+# --- OS / temp ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# --- Local configuration (examples are committed) ---
+.env
+.env.*
+!.env.example
+
+**/appsettings.json
+!**/appsettings.example.json
+**/appsettings.*.local.json
+**/secrets.json
+
+# --- Frontend (Node / Vite) ---
+node_modules/
+dist/
+.vite/
+*.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Backend (.NET) ---
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+*.user
+*.userosscache
+*.suo
+*.cache
+*.dll
+*.exe
+*.pdb
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# SQLite database (local dev data)
+**/tasksystem.db
+**/tasksystem.db-*
+
+# --- IDE / editors ---
+.vs/
+.idea/
+*.sln.iml
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# --- Coverage / tooling ---
+coverage/
+*.coverage
+*.coveragexml
+*.opencover.xml
+.sonarqube/
