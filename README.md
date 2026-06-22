@@ -104,7 +104,7 @@ Tasking/
 
 ## Authentication
 
-This app uses a **minimal identity flow** for local demo and assessment review — not production-grade auth. That is a deliberate choice for a **4–6 hour** take-home scope, not an oversight. There are no passwords, JWTs, or server-side sessions.
+This app uses a **minimal identity flow** for local demo and assessment review — not production-grade auth. That is a deliberate choice for a **4–6 hour** scope, not an oversight. There are no passwords, JWTs, or server-side sessions.
 
 Within that time budget, the priority was working CRUD, persistence, validation, tests, and end-to-end frontend integration. A production auth system would consume most of the window and leave core task features unfinished.
 
@@ -188,7 +188,7 @@ Replace that single registration when adding real auth.
 
 ### Auth trade-offs
 
-| Choice | Why, in a short take-home | Cost |
+| Choice | Why, in a short time scope | Cost |
 |--------|---------------------------|------|
 | Header-based identity instead of JWT/Identity | Ships a working task API + frontend integration in the time box | Any client can impersonate any `userId` |
 | Open user registration | Simple onboarding for demo; no account system to build | Spam/duplicate accounts; not production-safe |
