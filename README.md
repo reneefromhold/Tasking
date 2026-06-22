@@ -1,6 +1,6 @@
 # TaskSystem
 
-Monorepo for a to-do task management application. The **backend** is an ASP.NET Core minimal API; the **frontend** is a React + Vite SPA. Both projects were originally separate repositories and now live under `src/`.
+Monorepo for a to-do task management application. The **backend** is an ASP.NET Core minimal API; the **frontend** is a React + Vite SPA. 
 
 | App | Path | Stack | Dev URL |
 |-----|------|-------|---------|
@@ -195,14 +195,6 @@ Replace that single registration when adding real auth.
 | Validate user exists before task ops | Prevents orphan FKs and gives clear **401** errors | Still does not prove the caller *is* that user |
 | Creator-based task access | Clear ownership model; easy to test | `assignee` is metadata only; assignee cannot manage tasks created for them |
 | **404** instead of **403** on wrong owner | Hides task existence from non-owners | Less obvious to API consumers than **403 Forbidden** |
-
-### If authentication were required next
-
-1. Add credentials (e.g. ASP.NET Core Identity with email + password, or magic-link email).
-2. Issue signed tokens (JWT) on successful login.
-3. Replace `HeaderCurrentUserAccessor` with middleware that validates the token and sets the user ID.
-4. Protect `POST /api/users` or gate it behind admin/signup policy.
-5. Add tests for unauthorized and expired token paths.
 
 ### Security note
 
@@ -496,4 +488,7 @@ Pull requests run the same test suite via GitHub Actions (`.github/workflows/tes
 - [ ] Refactor **category** and **assignee** pickers to scale beyond loading full lists (server-side search, pagination, typeahead API)
 - [ ] Adopt React Router **loaders/actions** (`createBrowserRouter`) for route-centric data fetching and bookmarkable URLs
 - [ ] Add ability to **create new categories** (requires backend endpoint)
+- [ ] Add ability to **let users see tasks assigned to them, that were created by someone else** (requires backend endpoint)
 - [ ] Revamp CSS to use **Tailwind CSS** (replace the global `index.css` approach)
+- [ ] Design overhaul. This is a very basic UI with minimal functionality. 
+- [ ] E2E testing. More robust FE testing
